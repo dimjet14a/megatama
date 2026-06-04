@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="antialiased">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,75 +11,121 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <style>
-        .login-bg {
-            background-image: url('https://images.unsplash.com/photo-1541888086925-ebbc31bc0888?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-        }
-        .glass-card {
-            background: rgba(11, 31, 58, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-    </style>
 </head>
-<body class="login-bg h-screen w-full flex items-center justify-center relative font-sans">
-    <div class="absolute inset-0 bg-black/60 z-0"></div>
-    
-    <!-- Tombol Kembali -->
-    <a href="index.html" class="absolute top-6 left-6 text-gray-300 hover:text-white transition-colors text-sm flex items-center z-20" data-aos="fade-right">
-        <i class="fas fa-arrow-left mr-2"></i> Kembali ke Beranda
-    </a>
+<body class="h-screen w-full flex font-sans bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
 
-    <!-- Login Card -->
-    <div class="glass-card w-full max-w-md p-8 sm:p-10 rounded-2xl z-10 mx-4" data-aos="zoom-in" data-aos-duration="800">
-        <div class="text-center mb-8">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-corporate-bright/20 mb-4 border border-corporate-bright/30">
-                <i class="fas fa-hard-hat text-3xl text-corporate-bright"></i>
-            </div>
-            <h1 class="text-3xl font-bold text-white tracking-wide">MEGATAMA</h1>
-            <p class="text-gray-300 mt-2 text-sm">Project Monitoring Portal</p>
+    <!-- Bagian Kiri: Branding Visual (Hidden on Mobile) -->
+    <div class="hidden lg:flex w-1/2 relative flex-col justify-between p-12 overflow-hidden bg-black">
+        <!-- Background Image -->
+        <img src="https://images.unsplash.com/photo-1541888086925-ebbc31bc0888?q=80&w=2070&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover" alt="Construction">
+        
+        <!-- Overlay Gradient & Texture -->
+        <div class="absolute inset-0 bg-gradient-to-br from-black/95 to-neutral-900/90 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20"></div>
+
+        <!-- Header Logo -->
+        <div class="relative z-10">
+            <a href="index.html" class="inline-flex items-center gap-3 text-white font-bold text-2xl tracking-wide hover:opacity-90 transition-opacity">
+                <div class="w-10 h-10 rounded-xl bg-orange-500 flex items-center justify-center shadow-lg shadow-orange-500/30">
+                    <i class="fas fa-layer-group text-xl"></i>
+                </div>
+                MEGATAMA
+            </a>
         </div>
 
-        <form id="loginForm" class="space-y-6">
-            <div>
-                <label class="block text-sm font-medium text-gray-300 mb-2">Username / Email</label>
-                <div class="relative">
-                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <i class="fas fa-user text-gray-400"></i>
-                    </div>
-                    <input type="text" id="username" required class="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-corporate-bright focus:border-transparent transition-all" placeholder="admin@megatama.com">
+        <!-- Hero Text -->
+        <div class="relative z-10" data-aos="fade-up" data-aos-duration="1000">
+            <h1 class="text-4xl font-bold text-white mb-5 leading-tight">Membangun Masa Depan <br>Dengan Presisi & Kualitas.</h1>
+            <p class="text-gray-300 text-lg max-w-md leading-relaxed">Sistem monitoring proyek enterprise untuk mengelola progres, anggaran, dan kolaborasi tim Anda secara real-time.</p>
+            
+            <!-- Trust Badges -->
+            <div class="flex items-center gap-4 mt-8">
+                <div class="flex -space-x-3">
+                    <img class="w-10 h-10 border-2 border-black rounded-full" src="https://ui-avatars.com/api/?name=Direksi&background=F97316&color=fff" alt="User">
+                    <img class="w-10 h-10 border-2 border-black rounded-full" src="https://ui-avatars.com/api/?name=Manager&background=10B981&color=fff" alt="User">
+                    <img class="w-10 h-10 border-2 border-black rounded-full" src="https://ui-avatars.com/api/?name=Klien&background=F59E0B&color=fff" alt="User">
                 </div>
+                <p class="text-sm text-gray-400 font-medium">Digunakan oleh +5.000 Profesional</p>
             </div>
+        </div>
+    </div>
 
-            <div>
-                <label class="block text-sm font-medium text-gray-300 mb-2">Password</label>
-                <div class="relative">
-                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <i class="fas fa-lock text-gray-400"></i>
+    <!-- Bagian Kanan: Form Login -->
+    <div class="w-full lg:w-1/2 flex flex-col relative bg-white dark:bg-slate-900 transition-colors duration-300 overflow-y-auto">
+        
+        <!-- Back Button -->
+        <div class="absolute top-6 left-6 lg:top-8 lg:right-8 lg:left-auto">
+            <a href="index.html" class="flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
+                <i class="fas fa-arrow-left"></i> Kembali ke Beranda
+            </a>
+        </div>
+
+        <!-- Form Container -->
+        <div class="flex-1 flex items-center justify-center p-6 sm:p-12">
+            <div class="w-full max-w-md" data-aos="fade-up" data-aos-duration="800">
+                
+                <!-- Mobile Logo -->
+                <div class="lg:hidden flex items-center justify-center gap-3 text-slate-800 dark:text-white font-bold text-2xl tracking-wide mb-10">
+                    <div class="w-10 h-10 rounded-xl bg-orange-500 flex items-center justify-center text-white shadow-lg shadow-orange-500/30">
+                        <i class="fas fa-layer-group text-xl"></i>
                     </div>
-                    <input type="password" id="password" required class="w-full pl-11 pr-12 py-3 bg-white/5 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-corporate-bright focus:border-transparent transition-all" placeholder="••••••••">
-                    <div class="absolute inset-y-0 right-0 pr-4 flex items-center cursor-pointer" id="togglePassword">
-                        <i class="fas fa-eye text-gray-400 hover:text-white transition-colors"></i>
+                    MEGATAMA
+                </div>
+
+                <div class="text-center lg:text-left mb-8">
+                    <h2 class="text-3xl font-bold text-slate-800 dark:text-white mb-2 tracking-tight">Selamat Datang</h2>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Masuk ke portal manajemen proyek Anda.</p>
+                </div>
+
+                <form id="loginForm" class="space-y-5">
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Email Perusahaan</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <i class="fas fa-envelope text-slate-400"></i>
+                            </div>
+                            <input type="text" id="username" required class="w-full pl-11 pr-4 py-3.5 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-800 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all" placeholder="admin@megatama.com">
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                    <input type="checkbox" id="remember" class="w-4 h-4 rounded border-gray-400 text-corporate-bright focus:ring-corporate-bright bg-white/10">
-                    <label for="remember" class="ml-2 text-sm text-gray-300">Remember Me</label>
-                </div>
-                <a href="#" class="text-sm text-corporate-bright hover:text-white transition-colors">Lupa Password?</a>
-            </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Kata Sandi</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-slate-400"></i>
+                            </div>
+                            <input type="password" id="password" required class="w-full pl-11 pr-12 py-3.5 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-800 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all" placeholder="••••••••">
+                            <div class="absolute inset-y-0 right-0 pr-4 flex items-center cursor-pointer text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors" id="togglePassword">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                        </div>
+                    </div>
 
-            <button type="submit" class="w-full py-3 px-4 bg-corporate-bright hover:bg-blue-600 text-white font-bold rounded-xl shadow-lg hover:shadow-corporate-bright/30 transition-all duration-300 flex items-center justify-center gap-2 transform hover:-translate-y-1">
-                <span>Masuk Dashboard</span>
-            </button>
-        </form>
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="remember" class="w-4 h-4 rounded border-slate-300 text-orange-500 focus:ring-orange-500 dark:border-slate-600 dark:bg-slate-800">
+                            <label for="remember" class="ml-2 text-sm font-medium text-slate-600 dark:text-slate-400 cursor-pointer">Ingat Saya</label>
+                        </div>
+                        <a href="#" class="text-sm font-medium text-orange-500 hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300 transition-colors">Lupa Password?</a>
+                    </div>
+
+                    <button type="submit" class="w-full py-3.5 px-4 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-xl shadow-lg shadow-orange-500/30 transition-all duration-300 flex items-center justify-center gap-2 transform hover:-translate-y-0.5 mt-6">
+                        Masuk Dashboard <i class="fas fa-arrow-right text-sm ml-1"></i>
+                    </button>
+                    
+                    <!-- Decorative Divider -->
+                    <div class="mt-8 flex items-center gap-4">
+                        <div class="h-px bg-slate-200 dark:bg-slate-700 flex-1"></div>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Akses Portal Eksternal</span>
+                        <div class="h-px bg-slate-200 dark:bg-slate-700 flex-1"></div>
+                    </div>
+                    
+                    <button type="button" class="w-full mt-6 py-3 px-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-semibold rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center justify-center gap-3">
+                        <i class="fas fa-building text-orange-500"></i> Login sebagai Klien / Mitra
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
